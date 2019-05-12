@@ -1,0 +1,23 @@
+<?php foreach ($this->hot_topics_list AS $key => $val) { ?>
+    <div class="follow" <?PHP if(count($val['children'])==0):?> onclick="window.location.href='topic/<?php echo $val['url_token']; ?>'"<?php endif;?> >
+        <h3 class="current">
+            <a class="fl" href="topic/<?php echo $val['url_token']; ?>"><?php echo $val['topic_title']; ?></a>
+            <?PHP if(count($val['children'])>0):?>
+            <a href="javascript:;" class="showdown"><img src="/static/mobile/images/open_ico.png">收起</a>
+            <?php endif;?>
+        </h3>
+        <?php foreach ($val['children'] AS $k => $v1) { ?>
+            <dl >
+                <dt onclick="window.location.href='topic/<?php echo $v1['url_token']; ?>'"><img src="<?php echo $v1['topic_pic']; ?>"></dt>
+                <dd class="d_center" onclick="window.location.href='topic/<?php echo $v1['url_token']; ?>'">
+                    <h4><?php echo $v1['topic_title']; ?></h4>
+                    <p><span><?php echo $v1['focus_count']; ?>人关注</span></p>
+                </dd>
+                <dd class="d_right">
+                    <a topic_id="<?php echo $v1['topic_id']; ?>" <?php if($v1['has_focus']){echo 'class="active"';}?> ><?php if($v1['has_focus']){echo '取消关注';}else{echo '+ 关注 ';}?></a>
+                </dd>
+                <div class="clear"></div>
+            </dl>
+<?php } ?>
+    </div>
+<?php } ?>
