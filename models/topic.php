@@ -1403,7 +1403,7 @@ class topic_class extends AWS_MODEL
 
 	public function get_parent_topics()
 	{
-		$parent_topic_list_query = $this->fetch_all('topic', null , 'topic_title ASC');
+		$parent_topic_list_query = $this->fetch_all('topic', null, 'topic_title ASC');
 
 		if (!$parent_topic_list_query)
 		{

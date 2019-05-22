@@ -12,7 +12,7 @@
 				<?php } else { ?>
 				<ul class="nav nav-tabs">
 					<li><a href="admin/topic/list/"><?php _e('话题管理'); ?></a></li>
-					<li><a href="admin/topic/parent/"><?php _e('根话题'); ?></a></li>
+					<!-->li><a href="admin/topic/parent/"><?php _e('根话题'); ?></a></li-->
 					<li class="active"><a href="admin/topic/edit/"><?php _e('新建话题'); ?></a></li>
 				</ul>
 				<?php } ?>
@@ -77,7 +77,7 @@
 				</tr>
 				<?php } ?>
 
-				<tr>
+				<!-- <tr>
 					<td>
 						<div class="form-group">
 							<span class="col-sm-4 col-xs-3 control-label"><?php _e('根话题'); ?>:</span>
@@ -94,12 +94,12 @@
 							</div>
 						</div>
 					</td>
-				</tr>
+				</tr> -->
 
 				<tr class="parent_topic_tr"<?php if ($this->topic_info['is_parent']) { ?> style="display: none;"<?php } ?>>
 					<td>
 						<div class="form-group">
-							<span class="col-sm-4 col-xs-3 control-label"><?php _e('选择根话题'); ?>:</span>
+							<span class="col-sm-4 col-xs-3 control-label"><?php _e('选择父话题'); ?>:</span>
 							<div class="col-sm-4 col-xs-8">
 								<select id="parent_topic_select" class="collapse" name="parent_id">
 								<option value="0"> --- </option>
@@ -111,7 +111,7 @@
 								<div class="aw-publish-title">
 									<div class="dropdown">
 										<div class="dropdown-toggle">
-											<input class="aw-hide-txt form-control" id="aw-topic-tags-select" placeholder="<?php _e(根话题); ?>" />
+											<input class="aw-hide-txt form-control" id="aw-topic-tags-select" placeholder="<?php _e(父话题); ?>" />
 											<a class="triangle"><i class="icon icon-down"></i></a>
 										</div>
 										<div class="aw-dropdown">
