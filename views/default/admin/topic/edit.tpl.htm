@@ -101,7 +101,7 @@
 						<div class="form-group">
 							<span class="col-sm-4 col-xs-3 control-label"><?php _e('选择父话题'); ?>:</span>
 							<div class="col-sm-4 col-xs-8">
-								<select id="parent_topic_select" class="collapse" name="parent_id">
+								<select id="parent_topic_select_1" class="collapse" name="parent_id_1">
 								<option value="0"> --- </option>
 								<?php if ($this->parent_topics) { foreach ($this->parent_topics AS $val) { ?>
 								<option value="<?php echo $val['topic_id']; ?>"<?php if ($val['topic_id'] == $this->topic_info['parent_id']) { ?> selected="selected"<?php } ?>><?php echo $val['topic_title']; ?></option>
@@ -111,7 +111,7 @@
 								<div class="aw-publish-title">
 									<div class="dropdown">
 										<div class="dropdown-toggle">
-											<input class="aw-hide-txt form-control" id="aw-topic-tags-select" placeholder="<?php _e(父话题); ?>" />
+											<input class="aw-hide-txt form-control" id="aw-topic-tags-select-1" placeholder="<?php _e(父话题); ?>" />
 											<a class="triangle"><i class="icon icon-down"></i></a>
 										</div>
 										<div class="aw-dropdown">
@@ -121,8 +121,9 @@
 									</div>
 								</div>
 							</div>
+							<br />
                       		<div class="col-sm-4 col-xs-8">
-								<select id="parent_topic_select" class="collapse" name="parent_id">
+								<select id="parent_topic_select_2" class="collapse" name="parent_id_2">
 								<option value="0"> --- </option>
 								<?php if ($this->parent_topics) { foreach ($this->parent_topics AS $val) { ?>
 								<option value="<?php echo $val['topic_id']; ?>"<?php if ($val['topic_id'] == $this->topic_info['parent_id']) { ?> selected="selected"<?php } ?>><?php echo $val['topic_title']; ?></option>
@@ -132,7 +133,29 @@
 								<div class="aw-publish-title">
 									<div class="dropdown">
 										<div class="dropdown-toggle">
-											<input class="aw-hide-txt form-control" id="aw-topic-tags-select" placeholder="<?php _e(父话题); ?>" />
+											<input class="aw-hide-txt form-control" id="aw-topic-tags-select-1" placeholder="<?php _e(父话题); ?>" />
+											<a class="triangle"><i class="icon icon-down"></i></a>
+										</div>
+										<div class="aw-dropdown">
+											<ul class="aw-dropdown-list">
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<br />
+                      		<div class="col-sm-4 col-xs-8">
+								<select id="parent_topic_select_3" class="collapse" name="parent_id_3">
+								<option value="0"> --- </option>
+								<?php if ($this->parent_topics) { foreach ($this->parent_topics AS $val) { ?>
+								<option value="<?php echo $val['topic_id']; ?>"<?php if ($val['topic_id'] == $this->topic_info['parent_id']) { ?> selected="selected"<?php } ?>><?php echo $val['topic_title']; ?></option>
+								<?php } } ?>
+								</select>
+
+								<div class="aw-publish-title">
+									<div class="dropdown">
+										<div class="dropdown-toggle">
+											<input class="aw-hide-txt form-control" id="aw-topic-tags-select-1" placeholder="<?php _e(父话题); ?>" />
 											<a class="triangle"><i class="icon icon-down"></i></a>
 										</div>
 										<div class="aw-dropdown">
