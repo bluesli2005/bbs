@@ -1054,9 +1054,13 @@ class ajax extends AWS_ADMIN_CONTROLLER
 
         if ($is_parent == TRUE)
         {
-            $parent_list = '0' ;
+            $this->model('topic')->set_is_parent($topic_id, 1);
+        } 
+        else 
+        {
+            $this->model('topic')->set_is_parent($topic_id, 0);
         }
-
+        
         $this->model('topic')->set_parent_id($topic_id, $parent_list);
 
         H::ajax_json_output(AWS_APP::RSM(array(
