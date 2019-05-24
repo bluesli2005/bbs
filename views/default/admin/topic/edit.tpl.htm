@@ -208,58 +208,58 @@
 			{
 				$('.aw-publish-title #aw-topic-tags-select' + i).val($('#parent_topic_select_'+ i  +' option').eq(0).text());
 			}
-		}
 
-		$('.aw-publish-title .aw-dropdown-list li').click(function()
-		{
-			$('#parent_topic_select').val($(this).data('value'));
-			$('#aw-topic-tags-select').val($(this).text());
-			$('.aw-publish-title .dropdown').removeClass('open');
-			$('.aw-publish-title .aw-dropdown-list li').removeClass('collapse');
-			//AWS.ajax_request(G_BASE_URL + '/topic/ajax/set_parent_id/', 'topic_id=<?php echo $this->topic_info['topic_id']; ?>&parent_id=' + $(this).data('value'));
-		});
+			$('.aw-publish-title-' + i + ' .aw-dropdown-list li').click(function()
+			{
+				$('#parent_topic_select-' + i).val($(this).data('value'));
+				$('#aw-topic-tags-select' + i).val($(this).text());
+				$('.aw-publish-title .dropdown').removeClass('open');
+				$('.aw-publish-title .aw-dropdown-list li').removeClass('collapse');
+				//AWS.ajax_request(G_BASE_URL + '/topic/ajax/set_parent_id/', 'topic_id=<?php echo $this->topic_info['topic_id']; ?>&parent_id=' + $(this).data('value'));
+			});
 
-		$('.aw-publish-title .triangle').click(function()
-		{
-			if ($(this).parents('.dropdown').hasClass('open'))
+			$('.aw-publish-title .triangle').click(function()
 			{
-				$(this).parents('.dropdown').removeClass('open');
-			}
-			else
-			{
-				$(this).parents('.dropdown').addClass('open');
-			}
-		});
-
-		$('.aw-publish-title #aw-topic-tags-select').bind({
-			focus : function()
-			{
-				$(this).parents('.dropdown').addClass('open');
-			},
-
-			keyup : function()
-			{
-				var value = $(this).val();
-				if (value != '')
+				if ($(this).parents('.dropdown').hasClass('open'))
 				{
-					$.each($('.aw-publish-title .aw-dropdown-list li'), function (i, e)
-					{
-						if ($(this).text().match(value) == null)
-						{
-							$(this).addClass('collapse');
-						}
-						else
-						{
-							$(this).removeClass('collapse');
-						}
-					});
+					$(this).parents('.dropdown').removeClass('open');
 				}
 				else
 				{
-					$('.aw-publish-title .aw-dropdown-list li').removeClass('collapse');
+					$(this).parents('.dropdown').addClass('open');
 				}
-			}
-		});
+			});
+
+			$('.aw-publish-title #aw-topic-tags-select').bind({
+				focus : function()
+				{
+					$(this).parents('.dropdown').addClass('open');
+				},
+
+				keyup : function()
+				{
+					var value = $(this).val();
+					if (value != '')
+					{
+						$.each($('.aw-publish-title .aw-dropdown-list li'), function (i, e)
+						{
+							if ($(this).text().match(value) == null)
+							{
+								$(this).addClass('collapse');
+							}
+							else
+							{
+								$(this).removeClass('collapse');
+							}
+						});
+					}
+					else
+					{
+						$('.aw-publish-title .aw-dropdown-list li').removeClass('collapse');
+					}
+				}
+			});
+		}
 
 		$(document).click(function(e)
 		{
