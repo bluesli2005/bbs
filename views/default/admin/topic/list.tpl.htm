@@ -64,9 +64,14 @@
                                 </td>
 
 								<td>
-                                    <?php if ($topic_info['parent_id']) { ?>
-                                    <a href="topic/<?php echo $this->parent_topic_list[$topic_info['parent_id']]['topic_id']; ?>" target="_blank"><?php echo $this->parent_topic_list[$topic_info['parent_id']]['topic_title']; ?></a>
-                                    <?php } ?>
+                                    <?php  if ( $topic_info['parent_id'] != '0' ) { ?>
+                                    <?php    $p_list = explode(',', $topic_info['parent_id']); ?>
+                                    <?php       forEach ($p_list AS $key => $p_id ) { ?>
+                                    <?php       if($key < sizeof($p_list) - 1 ) { ?>
+                                    <a href="topic/<?php echo $this->parent_topic_list[$p_id]['topic_id']; ?>" target="_blank"><?php echo $this->parent_topic_list[$p_id]['topic_title']; ?></a>
+                                    <?php  	} ?>
+                                    <?php  } ?>
+									<?php } ?>
                                 </td>
 
                                 <td><a href="people/<?php echo $this->users_info[$topic_info['last_edited_uid']]['uid']; ?>" target="_blank"><?php echo $this->users_info[$topic_info['last_edited_uid']]['user_name'] ?></a></td>
