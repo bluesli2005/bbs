@@ -1398,7 +1398,7 @@ class topic_class extends AWS_MODEL
 			$where = 'topic_id = ' . intval($topic_id);
 		}
 
-		return $this->update('topic', array('parent_id' => intval($parent_id)), $where);
+		return $this->update('topic', array('parent_id' => $parent_id), $where);
 	}
 
 	public function get_parent_topics()
