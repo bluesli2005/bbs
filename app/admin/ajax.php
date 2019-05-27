@@ -1043,24 +1043,22 @@ class ajax extends AWS_ADMIN_CONTROLLER
         for( $index = 1; $index <= $max_parents; $index++)
         {
             $parent_index = "parent_id_".$index;
-            
-            echo $_POST[$parent_index];
-          
+
             if($_POST[$parent_index] != 0 )
             {
 
                 $is_parent = FALSE;
 
                 $parent_list .= $_POST[$parent_index] ;
-				
+
                 $parent_list .= "," ;
             }
         }
         if ($is_parent == TRUE)
         {
             $this->model('topic')->set_is_parent($topic_id, "1");
-        } 
-        else 
+        }
+        else
         {
             $this->model('topic')->set_is_parent($topic_id, "0");
         }

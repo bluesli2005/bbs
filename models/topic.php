@@ -1423,6 +1423,50 @@ class topic_class extends AWS_MODEL
 		return $parent_topic_list;
 	}
 
+	public function get_all_parents_topics() {
+
+		$parent_all_topic_list_query = $this->fetch_all('topic', 'is_parent=1', 'topic_title ASC');
+
+		if (!$parent_all_topic_list_query)
+		{
+
+			return false;
+
+		}
+
+		foreach ($parent_all_topic_list_query AS $key => $value)
+		{
+
+            $parent_all_topic_list[$key] = this-> get_all_parents_topics_loop(null, $value\['topic_id'])
+
+		}
+
+		return $parent_all_topic_list;
+	}
+
+	public function get_all_parents_topics_loop($res, $parent_id) {
+		if(!$res)
+		{
+          $res = array()
+		}
+
+		$parent_topics_list_by_parent_id = $this ->fetch_all('topic', 'parents_id like' . $paernt_id .',%', 'id ASC')
+
+		if( empty($parent_topics_list_by_parent_id))
+		{
+			return $res;
+		}
+
+		$res[$key] = $parent_topics_list_by_parent_id;
+
+		foreach($parent_topics_list_by_parent_id as $key => $value) {
+		{
+			$this->get_all_parents_topics_loop($res[$key], $value['id'] ); }
+		}
+
+		return $res;
+	}
+
 	public function get_child_topic_ids($topic_id)
 	{
 		if ($child_topics = $this->query_all("SELECT topic_id FROM " . get_table('topic') . " WHERE parent_id = " . intval($topic_id)))
@@ -1434,6 +1478,7 @@ class topic_class extends AWS_MODEL
 		}
 
 		return $child_topic_ids;
+
 	}
 
 	public function get_related_topic_ids_by_id($topic_id)
