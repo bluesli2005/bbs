@@ -100,72 +100,20 @@
 				<tr class="parent_topic_tr">
 					<td>
 						<div class="form-group">
-							<span class="col-sm-4 col-xs-3 control-label"><?php _e('选择父话题'); ?>:</span>
-							<div class="col-sm-4 col-xs-8">
-								<select id="parent_topic_select_1" name="parent_id_1">
+							<?php if ( $this->topic_info['parent_id'] != '0' ) { ?>
+							<?php $p_ids_list = explode(',', $topic_info['parent_id']); ?>
+							<?php } ?>
+							<?php for ($i = 1; $i <= 3; $i++) { ?>
+							<span class="col-sm-4 col-xs-3 col-lg-4 control-label"><?php if($i == 1 ) {  _e('选择父话题'); } ?>:</span>
+							<div class="col-sm-4 col-xs-8 col-lg-8">
+								<select id='"parent_topic_select_' . $i .'"' name='"parent_id_"' . $i . '"' >
 								<option value="0"> --- </option>
 								<?php if ($this->parent_topics) { foreach ($this->parent_topics AS $val) { ?>
-								<option value="<?php echo $val['topic_id']; ?>"<?php if ($val['topic_id'] == $this->topic_info['parent_id']) { ?> selected="selected"<?php } ?>><?php echo $val['topic_title']; ?></option>
+								<option value="<?php echo $val['topic_id']; ?>"<?php if ( $p_ids_list[$i - 1] && $val['topic_id'] == $p_ids_list[$i - 1] ) { ?> selected="selected"<?php } ?>><?php echo $val['topic_title']; ?></option>
 								<?php } } ?>
 								</select>
-
-								<!--div class="aw-publish-title">
-									<div class="dropdown">
-										<div class="dropdown-toggle">
-											<input class="aw-hide-txt form-control" id="aw-topic-tags-select-1" placeholder="<?php _e(父话题); ?>" />
-											<a class="triangle"><i class="icon icon-down"></i></a>
-										</div>
-										<div class="aw-dropdown">
-											<ul class="aw-dropdown-list">
-											</ul>
-										</div>
-									</div>
-								</div-->
 							</div>
-							<span class="col-sm-4 col-xs-3 control-label"></span>
-                      		<div class="col-sm-4 col-xs-8">
-								<select id="parent_topic_select_2" name="parent_id_2">
-								<option value="0"> --- </option>
-								<?php if ($this->parent_topics) { foreach ($this->parent_topics AS $val) { ?>
-								<option value="<?php echo $val['topic_id']; ?>"<?php if ($val['topic_id'] == $this->topic_info['parent_id']) { ?> selected="selected"<?php } ?>><?php echo $val['topic_title']; ?></option>
-								<?php } } ?>
-								</select>
-
-								<!--div class="aw-publish-title">
-									<div class="dropdown">
-										<div class="dropdown-toggle">
-											<input class="aw-hide-txt form-control" id="aw-topic-tags-select-2" placeholder="<?php _e(父话题); ?>" />
-											<a class="triangle"><i class="icon icon-down"></i></a>
-										</div>
-										<div class="aw-dropdown">
-											<ul class="aw-dropdown-list">
-											</ul>
-										</div>
-									</div>
-								</div-->
-							</div>
-							<span class="col-sm-4 col-xs-3 control-label"></span>
-                      		<div class="col-sm-4 col-xs-8">
-								<select id="parent_topic_select_3" name="parent_id_3">
-								<option value="0"> --- </option>
-								<?php if ($this->parent_topics) { foreach ($this->parent_topics AS $val) { ?>
-								<option value="<?php echo $val['topic_id']; ?>"<?php if ($val['topic_id'] == $this->topic_info['parent_id']) { ?> selected="selected"<?php } ?>><?php echo $val['topic_title']; ?></option>
-								<?php } } ?>
-								</select>
-
-								<!--div class="aw-publish-title">
-									<div class="dropdown">
-										<div class="dropdown-toggle">
-											<input class="aw-hide-txt form-control" id="aw-topic-tags-select-3" placeholder="<?php _e(父话题); ?>" />
-											<a class="triangle"><i class="icon icon-down"></i></a>
-										</div>
-										<div class="aw-dropdown">
-											<ul class="aw-dropdown-list">
-											</ul>
-										</div>
-									</div>
-								</div-->
-							</div>
+							<?php } ?>
 						</div>
 					</td>
 				</tr>
