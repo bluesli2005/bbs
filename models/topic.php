@@ -1423,7 +1423,7 @@ class topic_class extends AWS_MODEL
 		return $parent_topic_list;
 	}
 
-	public function get_all_parents_topics() {
+	public function get_all_parent_topics() {
 
 		$parent_all_topic_list_query = $this->fetch_all('topic', 'is_parent=1', 'topic_title ASC');
 
@@ -1437,20 +1437,21 @@ class topic_class extends AWS_MODEL
 		foreach ($parent_all_topic_list_query AS $key => $value)
 		{
 
-            $parent_all_topic_list[$key] = this-> get_all_parents_topics_loop(null, $value\['topic_id'])
+            $parent_all_topic_list[$key] = $this-> get_all_parent_topics_loop(null, $value['topic_id']);
 
 		}
 
 		return $parent_all_topic_list;
 	}
 
-	public function get_all_parents_topics_loop($res, $parent_id) {
+	public function get_all_parent_topics_loop($res, $parent_id) 
+    {
 		if(!$res)
 		{
-          $res = array()
+          $res = array();
 		}
 
-		$parent_topics_list_by_parent_id = $this ->fetch_all('topic', 'parents_id like' . $paernt_id .',%', 'id ASC')
+		$parent_topics_list_by_parent_id = $this ->fetch_all('topic', 'parent_id like "%'. $parent_id .',"', 'topic_id ASC');
 
 		if( empty($parent_topics_list_by_parent_id))
 		{
@@ -1459,9 +1460,9 @@ class topic_class extends AWS_MODEL
 
 		$res[$key] = $parent_topics_list_by_parent_id;
 
-		foreach($parent_topics_list_by_parent_id as $key => $value) {
+		foreach($parent_topics_list_by_parent_id as $key => $value) 
 		{
-			$this->get_all_parents_topics_loop($res[$key], $value['id'] ); }
+			 $this->get_all_parent_topics_loop($res[$key], $value['topic_id'] ); 
 		}
 
 		return $res;
