@@ -1434,10 +1434,11 @@ class topic_class extends AWS_MODEL
 
 		}
 
-		foreach ($parent_all_topic_list_query AS $key => $value)
+		foreach ($parent_all_topic_list_query AS $value)
 		{
-
-            $parent_all_topic_list[$key] = $this-> get_all_parent_topics_loop(null, $value['topic_id']);
+		    $parent_all_topic_list[$value['topic_id']]["info"] = $value;	
+          
+            $parent_all_topic_list[$value['topic_id']]["child"] = $this-> get_all_parent_topics_loop(null, $value['topic_id']);
 
 		}
 
@@ -1458,11 +1459,10 @@ class topic_class extends AWS_MODEL
 			return $res;
 		}
 
-		$res[$key] = $parent_topics_list_by_parent_id;
-
-		foreach($parent_topics_list_by_parent_id as $key => $value) 
+		foreach($parent_topics_list_by_parent_id as $value) 
 		{
-			 $this->get_all_parent_topics_loop($res[$key], $value['topic_id'] ); 
+		   $res[$value["topic_id"]]["info"] = $value;
+		   $res[$value["topic_id"]]["child"] = $this->get_all_parent_topics_loop( $res['topic_id']["child"], $value['topic_id'] ); 
 		}
 
 		return $res;
