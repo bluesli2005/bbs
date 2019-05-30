@@ -201,6 +201,30 @@ class topic_class extends AWS_MODEL
 		return $topics[$topic_id];
 	}
 
+	public function get_topic_by_parent_ids($parent_ids)
+	{
+		$topics = new array();
+
+		if (! $parents_id)
+		{
+			return false;
+		}
+
+		$parent_id_list = explode(',', $parent_ids);
+
+		foreach ($parent_id_list as $key => $parent_id)
+		{
+			$topics[$key] = $this->fetch_row('topic', 'topic_id = ' . intval($parent_id));
+
+			// if ($topics[$parent_id] AND !$topics[$parent_id]['url_token'])
+			// {
+			// 	$topics[$parent_id]['url_token'] = urlencode($topics[$parent_id]['topic_title']);
+			// }
+		}
+
+		return $topics;
+	}
+
 	public function get_topic_by_url_token($url_token)
 	{
 		if ($topic_id = $this->fetch_one('topic', 'topic_id', "url_token = '" . $this->quote($url_token) . "'"))

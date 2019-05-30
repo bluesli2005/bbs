@@ -232,7 +232,7 @@ class main extends AWS_CONTROLLER
 
 				TPL::assign('redirect_message', $redirect_message);
 				TPL::assign('per_page', get_setting('contents_per_page'));
-				if ($topic_info['parent_id'])
+				if ($topic_info['parent_id'] && $topic_info['parent_id'] != '0')
 				{
 					TPL::assign('parent_topic_info', $this->model('topic')->get_topic_by_id($topic_info['parent_id']));
 				}
