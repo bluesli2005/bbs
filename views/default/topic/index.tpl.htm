@@ -258,10 +258,11 @@
 					<?php if ($this->parent_topic_info) { ?>
 					<div class="aw-mod">
 						<div class="mod-head">
-							<h3><?php _e('根话题'); ?></h3>
+							<h3><?php _e('父话题'); ?></h3>
 						</div>
-
-						<a class="aw-topic-name" href="topic/<?php echo $this->parent_topic_info['topic_id']; ?>" data-id="<?php echo $this->parent_topic_info['topic_id']; ?>"><span><?php echo $this->parent_topic_info['topic_title']; ?></span></a>
+					<?php foreach($this->parent_topic_info as $parent_id => $parent_topic) { ?>
+						<a class="aw-topic-name" href="topic/<?php echo $parent_topic['topic_id'] ?>" data-id="<?php echo $parent_topic['topic_id']; ?>"><span><?php echo $parent_topic['topic_title']; ?></span></a>
+					<?php } ?>
 					</div>
 					<?php } ?>
 

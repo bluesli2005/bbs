@@ -234,7 +234,7 @@ class main extends AWS_CONTROLLER
 				TPL::assign('per_page', get_setting('contents_per_page'));
 				if ($topic_info['parent_id'])
 				{
-					TPL::assign('parent_topic_info', $this->model('topic')->get_topic_by_id($topic_info['parent_id']));
+				   TPL::assign('parent_topic_info', $this->model('topic')->get_topic_by_parent_ids($topic_info['parent_id']));
 				}
 
 				TPL::output('topic/index');

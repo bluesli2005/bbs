@@ -12,7 +12,7 @@
 				<?php } else { ?>
 				<ul class="nav nav-tabs">
 					<li><a href="admin/topic/list/"><?php _e('话题管理'); ?></a></li>
-					<li><a href="admin/topic/parent/"><?php _e('根话题'); ?></a></li>
+					<!--li><a href="admin/topic/parent/"><?php _e('根话题'); ?></a></li-->
 					<li class="active"><a href="admin/topic/edit/"><?php _e('新建话题'); ?></a></li>
 				</ul>
 				<?php } ?>
@@ -77,7 +77,7 @@
 				</tr>
 				<?php } ?>
 
-				<tr>
+				<!-- <tr>
 					<td>
 						<div class="form-group">
 							<span class="col-sm-4 col-xs-3 control-label"><?php _e('根话题'); ?>:</span>
@@ -94,33 +94,40 @@
 							</div>
 						</div>
 					</td>
-				</tr>
+				</tr> -->
 
-				<tr class="parent_topic_tr"<?php if ($this->topic_info['is_parent']) { ?> style="display: none;"<?php } ?>>
+				<!--tr class="parent_topic_tr"<?php if ($this->topic_info['is_parent']) { ?> style="display: none;"<?php } ?>-->
+				<tr class="parent_topic_tr">
 					<td>
 						<div class="form-group">
-							<span class="col-sm-4 col-xs-3 control-label"><?php _e('选择根话题'); ?>:</span>
-							<div class="col-sm-4 col-xs-8">
-								<select id="parent_topic_select" class="collapse" name="parent_id">
+							<?php if ( $this->topic_info['parent_id'] != '0' ) { ?>
+							<?php $p_ids_list = explode(',', $this->topic_info['parent_id']); ?>
+							<?php } ?>
+                 			<?php 
+								function deep_foreach ($arr, $tag ){
+									//if(sizeof($arr) == 0 )  return false;
+                                    if ((tag)) $tag .= '○' ;
+                                    foreach ($arr as $key => $val ) {
+                                        if(sizeof( $val["child"] ) > 0 )
+                                        {
+											$options .= "<option value=". $val['info']['topic_id']. ">" . $tag . $val['info']['topic_title'] ."</option>";
+                                            $options .= deep_foreach($val["child"], $tag);
+                                        } else {
+										    $options .= "<option value=". $val['info']['topic_id']. ">" . $tag . $val["info"]['topic_title'] ."</option>";
+										}
+                                    }
+								    return $options;
+								}
+							?>
+                            <?php for ($i = 1; $i <= 3; $i++) { ?>
+							<span class="col-sm-4 col-xs-3 col-lg-4 control-label"><?php if($i == 1 ) {  _e('选择父话题'); } ?></span>
+							<div class="col-sm-4 col-xs-8 col-lg-8">
+								<select id="parent_topic_select_<?php echo $i ?>" name="parent_id_<?php echo $i ?>">
 								<option value="0"> --- </option>
-								<?php if ($this->parent_topics) { foreach ($this->parent_topics AS $val) { ?>
-								<option value="<?php echo $val['topic_id']; ?>"<?php if ($val['topic_id'] == $this->topic_info['parent_id']) { ?> selected="selected"<?php } ?>><?php echo $val['topic_title']; ?></option>
-								<?php } } ?>
+                                <?php echo deep_foreach($this->parent_all_topic_list); ?>
 								</select>
-
-								<div class="aw-publish-title">
-									<div class="dropdown">
-										<div class="dropdown-toggle">
-											<input class="aw-hide-txt form-control" id="aw-topic-tags-select" placeholder="<?php _e(根话题); ?>" />
-											<a class="triangle"><i class="icon icon-down"></i></a>
-										</div>
-										<div class="aw-dropdown">
-											<ul class="aw-dropdown-list">
-											</ul>
-										</div>
-									</div>
-								</div>
 							</div>
+							<?php } ?>
 						</div>
 					</td>
 				</tr>
@@ -148,71 +155,73 @@
 		<?php } ?>
 
 		// 根话题选择
-		$.each($('#parent_topic_select option'), function (i, e)
-		{
-			$('.aw-publish-title .aw-dropdown-list').append('<li data-value="' + $(this).attr('value') + '"><a href="javascript:;" >' + $(this).html() + '</a></li>');
-		});
-
-		// 初始化给input赋值
-		if ($('#parent_topic_select option[selected=selected]').text())
-		{
-			$('.aw-publish-title #aw-topic-tags-select').val($('#parent_topic_select option[selected=selected]').text());
-		}
-		else
-		{
-			$('.aw-publish-title #aw-topic-tags-select').val($('#parent_topic_select option').eq(0).text());
-		}
-
-		$('.aw-publish-title .aw-dropdown-list li').click(function()
-		{
-			$('#parent_topic_select').val($(this).data('value'));
-			$('#aw-topic-tags-select').val($(this).text());
-			$('.aw-publish-title .dropdown').removeClass('open');
-			$('.aw-publish-title .aw-dropdown-list li').removeClass('collapse');
-			//AWS.ajax_request(G_BASE_URL + '/topic/ajax/set_parent_id/', 'topic_id=<?php echo $this->topic_info['topic_id']; ?>&parent_id=' + $(this).data('value'));
-		});
-
-		$('.aw-publish-title .triangle').click(function()
-		{
-			if ($(this).parents('.dropdown').hasClass('open'))
+		for( var i = 1; i <= 3; i ++ ){
+			$.each($('#parent_topic_select_'+ i  +' option'), function (i, e)
 			{
-				$(this).parents('.dropdown').removeClass('open');
+				$('.aw-publish-title .aw-dropdown-list').append('<li data-value="' + $(this).attr('value') + '"><a href="javascript:;" >' + $(this).html() + '</a></li>');
+			});
+
+			// 初始化给input赋值
+			if ($('#parent_topic_select_'+ i + ' option[selected=selected]').text())
+			{
+				$('.aw-publish-title #aw-topic-tags-select-' + i).val($('#parent_topic_select_'+ i + ' option[selected=selected]').text());
 			}
 			else
 			{
-				$(this).parents('.dropdown').addClass('open');
+				$('.aw-publish-title #aw-topic-tags-select-' + i).val($('#parent_topic_select_'+ i + ' option').eq(0).text());
 			}
-		});
 
-		$('.aw-publish-title #aw-topic-tags-select').bind({
-			focus : function()
+			$('.aw-publish-title .aw-dropdown-list li').click(function()
 			{
-				$(this).parents('.dropdown').addClass('open');
-			},
+				$('#parent_topic_select_' + i).val($(this).data('value'));
+				$('#aw-topic-tags-select-' + i).val($(this).text());
+				$('.aw-publish-title .dropdown').removeClass('open');
+				$('.aw-publish-title .aw-dropdown-list li').removeClass('collapse');
+				//AWS.ajax_request(G_BASE_URL + '/topic/ajax/set_parent_id/', 'topic_id=<?php echo $this->topic_info['topic_id']; ?>&parent_id=' + $(this).data('value'));
+			});
 
-			keyup : function()
+			$('.aw-publish-title .triangle').click(function()
 			{
-				var value = $(this).val();
-				if (value != '')
+				if ($(this).parents('.dropdown').hasClass('open'))
 				{
-					$.each($('.aw-publish-title .aw-dropdown-list li'), function (i, e)
-					{
-						if ($(this).text().match(value) == null)
-						{
-							$(this).addClass('collapse');
-						}
-						else
-						{
-							$(this).removeClass('collapse');
-						}
-					});
+					$(this).parents('.dropdown').removeClass('open');
 				}
 				else
 				{
-					$('.aw-publish-title .aw-dropdown-list li').removeClass('collapse');
+					$(this).parents('.dropdown').addClass('open');
 				}
-			}
-		});
+			});
+
+			$('.aw-publish-title #aw-topic-tags-select').bind({
+				focus : function()
+				{
+					$(this).parents('.dropdown').addClass('open');
+				},
+
+				keyup : function()
+				{
+					var value = $(this).val();
+					if (value != '')
+					{
+						$.each($('.aw-publish-title .aw-dropdown-list li'), function (i, e)
+						{
+							if ($(this).text().match(value) == null)
+							{
+								$(this).addClass('collapse');
+							}
+							else
+							{
+								$(this).removeClass('collapse');
+							}
+						});
+					}
+					else
+					{
+						$('.aw-publish-title .aw-dropdown-list li').removeClass('collapse');
+					}
+				}
+			});
+		}
 
 		$(document).click(function(e)
 		{
@@ -277,17 +286,17 @@
 			}
 		});
 
-		$('input[name="is_parent"]').on('ifClicked', function()
-		{
-			if (this.value == 0)
-			{
-				$('.parent_topic_tr').removeAttr('style');
-			}
-			else
-			{
-				$('.parent_topic_tr').css('display', 'none');
-			}
-		});
+		//$('input[name="is_parent"]').on('ifClicked', function()
+		//{
+		//	if (this.value == 0)
+		//	{
+		//		$('.parent_topic_tr').removeAttr('style');
+		//	}
+		//	else
+		//	{
+		//		$('.parent_topic_tr').css('display', 'none');
+		//	}
+		//});
 	});
 </script>
 

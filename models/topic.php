@@ -201,6 +201,29 @@ class topic_class extends AWS_MODEL
 		return $topics[$topic_id];
 	}
 
+	public function get_topic_by_parent_ids($parent_ids)
+	{
+		$topics = array();
+
+		if (!$parent_ids)
+		{
+			return false;
+		}
+
+		$parent_id_list = explode(',', $parent_ids);
+		foreach ($parent_id_list as $key => $parent_id)
+		{
+			$topics[$key] = $this->fetch_row('topic', 'topic_id = ' . intval($parent_id));
+
+			// if ($topics[$parent_id] AND !$topics[$parent_id]['url_token'])
+			// {
+			// 	$topics[$parent_id]['url_token'] = urlencode($topics[$parent_id]['topic_title']);
+			// }
+		}
+
+		return $topics;
+	}
+
 	public function get_topic_by_url_token($url_token)
 	{
 		if ($topic_id = $this->fetch_one('topic', 'topic_id', "url_token = '" . $this->quote($url_token) . "'"))
@@ -1398,12 +1421,12 @@ class topic_class extends AWS_MODEL
 			$where = 'topic_id = ' . intval($topic_id);
 		}
 
-		return $this->update('topic', array('parent_id' => intval($parent_id)), $where);
+		return $this->update('topic', array('parent_id' => $parent_id), $where);
 	}
 
 	public function get_parent_topics()
 	{
-		$parent_topic_list_query = $this->fetch_all('topic', 'is_parent = 1', 'topic_title ASC');
+		$parent_topic_list_query = $this->fetch_all('topic', null, 'topic_title ASC');
 
 		if (!$parent_topic_list_query)
 		{
@@ -1423,6 +1446,51 @@ class topic_class extends AWS_MODEL
 		return $parent_topic_list;
 	}
 
+	public function get_all_parent_topics() {
+
+		$parent_all_topic_list_query = $this->fetch_all('topic', 'is_parent=1', 'topic_title ASC');
+
+		if (!$parent_all_topic_list_query)
+		{
+
+			return false;
+
+		}
+
+		foreach ($parent_all_topic_list_query AS $value)
+		{
+		    $parent_all_topic_list[$value['topic_id']]["info"] = $value;	
+          
+            $parent_all_topic_list[$value['topic_id']]["child"] = $this-> get_all_parent_topics_loop(null, $value['topic_id']);
+
+		}
+
+		return $parent_all_topic_list;
+	}
+
+	public function get_all_parent_topics_loop($res, $parent_id) 
+    {
+		if(!$res)
+		{
+          $res = array();
+		}
+
+		$parent_topics_list_by_parent_id = $this ->fetch_all('topic', 'parent_id like "%'. $parent_id .',"', 'topic_id ASC');
+
+		if( empty($parent_topics_list_by_parent_id))
+		{
+			return $res;
+		}
+
+		foreach($parent_topics_list_by_parent_id as $value) 
+		{
+		   $res[$value["topic_id"]]["info"] = $value;
+		   $res[$value["topic_id"]]["child"] = $this->get_all_parent_topics_loop( $res['topic_id']["child"], $value['topic_id'] ); 
+		}
+
+		return $res;
+	}
+
 	public function get_child_topic_ids($topic_id)
 	{
 		if ($child_topics = $this->query_all("SELECT topic_id FROM " . get_table('topic') . " WHERE parent_id = " . intval($topic_id)))
@@ -1434,6 +1502,7 @@ class topic_class extends AWS_MODEL
 		}
 
 		return $child_topic_ids;
+
 	}
 
 	public function get_related_topic_ids_by_id($topic_id)

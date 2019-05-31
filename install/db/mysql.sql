@@ -657,7 +657,7 @@ CREATE TABLE `[#DB_PREFIX#]topic` (
   `url_token` VARCHAR(32) DEFAULT NULL,
   `merged_id` INT( 11 ) NULL DEFAULT '0',
   `seo_title` varchar(255) DEFAULT NULL,
-  `parent_id` INT(10) NULL DEFAULT '0',
+  `parent_id` varchar(255) DEFAULT NULL,
   `is_parent` TINYINT(1) NULL DEFAULT '0',
   `discuss_count_last_week` INT(10) NULL DEFAULT '0',
   `discuss_count_last_month` INT(10) NULL DEFAULT '0',

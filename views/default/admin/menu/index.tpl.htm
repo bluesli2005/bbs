@@ -93,7 +93,7 @@
         $('#batchs_post').click(function()
         {
             if($('.icheckbox_square-blue').hasClass("checked")){
-                AWS.dialog('adminCategoryMove', {'option':eval('[' + json + ']'), 'name':'选择根话题','from_id':'#batchs_form'});
+                AWS.dialog('adminCategoryMove', {'option':eval('[' + json + ']'), 'name':'选择父话题','from_id':'#batchs_form'});
 
                 $('#parent_id').val($("#aw-ajax-box .form-control:eq(1)").val());
                 $('#action').val('set_parent_id');

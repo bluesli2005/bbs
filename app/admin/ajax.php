@@ -1033,13 +1033,37 @@ class ajax extends AWS_ADMIN_CONTROLLER
 
             $topic_id = $this->model('topic')->save_topic($_POST['topic_title'], $this->user_id, true, $_POST['topic_description']);
         }
+        // 获取parent_id
+        $max_parents = 3;
 
-        $this->model('topic')->set_is_parent($topic_id, $_POST['is_parent']);
+        $is_parent = TRUE;
 
-        if ($_POST['is_parent'] == 0)
+        $parent_list = "";
+
+        for( $index = 1; $index <= $max_parents; $index++)
         {
-            $this->model('topic')->set_parent_id($topic_id, $_POST['parent_id']);
+            $parent_index = "parent_id_".$index;
+
+            if($_POST[$parent_index] != 0 )
+            {
+
+                $is_parent = FALSE;
+
+                $parent_list .= $_POST[$parent_index] ;
+
+                $parent_list .= "," ;
+            }
         }
+        if ($is_parent == TRUE)
+        {
+            $this->model('topic')->set_is_parent($topic_id, "1");
+        }
+        else
+        {
+            $this->model('topic')->set_is_parent($topic_id, "0");
+        }
+
+        $this->model('topic')->set_parent_id($topic_id, $parent_list);
 
         H::ajax_json_output(AWS_APP::RSM(array(
             'url' => get_js_url('/admin/topic/list/')

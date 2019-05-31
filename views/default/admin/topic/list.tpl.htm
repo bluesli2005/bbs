@@ -7,7 +7,7 @@
             <h3>
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#list" data-toggle="tab"><?php _e('话题管理'); ?></a></li>
-                    <li><a href="admin/topic/parent/"><?php _e('根话题'); ?></a></li>
+                    <!--li><a href="admin/topic/parent/"><?php _e('根话题'); ?></a></li-->
                     <li><a href="admin/topic/edit/"><?php _e('新建话题'); ?></a></li>
                     <li><a href="#search" data-toggle="tab"><?php _e('搜索'); ?></a></li>
                     <li><a href="#today-topics" data-toggle="tab"><?php _e('今日话题'); ?></a></li>
@@ -36,7 +36,7 @@
                                 <th><?php _e('关注'); ?></th>
                                 <th><?php _e('合并'); ?></th>
                                 <th><?php _e('状态'); ?></th>
-                                <th><?php _e('根话题'); ?></th>
+                                <th><?php _e('父话题'); ?></th>
                                 <th><?php _e('最后编辑用户'); ?></th>
                                 <th><?php _e('最后编辑时间'); ?></th>
                                 <th><?php _e('操作'); ?></th>
@@ -64,9 +64,14 @@
                                 </td>
 
 								<td>
-                                    <?php if ($topic_info['parent_id']) { ?>
-                                    <a href="topic/<?php echo $this->parent_topic_list[$topic_info['parent_id']]['topic_id']; ?>" target="_blank"><?php echo $this->parent_topic_list[$topic_info['parent_id']]['topic_title']; ?></a>
-                                    <?php } ?>
+                                    <?php  if ( $topic_info['parent_id'] != '0' ) { ?>
+                                    <?php    $p_list = explode(',', $topic_info['parent_id']); ?>
+                                    <?php       forEach ($p_list AS $key => $p_id ) { ?>
+                                    <?php       if($key < sizeof($p_list) - 1 ) { ?>
+                                    <a href="topic/<?php echo $this->parent_topic_list[$p_id]['topic_id']; ?>" target="_blank"><?php echo $this->parent_topic_list[$p_id]['topic_title']; ?></a>
+                                    <?php  	} ?>
+                                    <?php  } ?>
+									<?php } ?>
                                 </td>
 
                                 <td><a href="people/<?php echo $this->users_info[$topic_info['last_edited_uid']]['uid']; ?>" target="_blank"><?php echo $this->users_info[$topic_info['last_edited_uid']]['user_name'] ?></a></td>

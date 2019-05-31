@@ -134,7 +134,6 @@ class topic extends AWS_ADMIN_CONTROLLER
 		TPL::assign('list', $topic_list);
 		TPL::assign('users_info', $users_info);
 		TPL::assign('parent_topic_list', $parent_topic_list);
-
 		TPL::output('admin/topic/list');
 	}
 
@@ -210,6 +209,8 @@ class topic extends AWS_ADMIN_CONTROLLER
 		}
 
 		TPL::assign('parent_topics', $this->model('topic')->get_parent_topics());
+
+		TPL::assign('parent_all_topic_list', $this->model('topic')->get_all_parent_topics());
 
 		TPL::import_js('js/fileupload.js');
 
