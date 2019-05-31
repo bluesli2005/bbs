@@ -110,10 +110,10 @@
                                     foreach ($arr as $key => $val ) {
                                         if(sizeof( $val["child"] ) > 0 )
                                         {
-											$options .= "<option value=". $val["info"]['topic_id']. ">" . $tag . $val["info"]['topic_title'] ."</option>";
+											$options .= "<option value=". $val['info']['topic_id']. ">" . $tag . $val['info']['topic_title'] ."</option>";
                                             $options .= deep_foreach($val["child"], $tag);
                                         } else {
-										    $options .= "<option value=". $val["info"]['topic_id']. ">" . $tag . $val["info"]['topic_title'] ."</option>";
+										    $options .= "<option value=". $val['info']['topic_id']. ">" . $tag . $val["info"]['topic_title'] ."</option>";
 										}
                                     }
 								    return $options;

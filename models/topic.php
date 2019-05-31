@@ -203,7 +203,7 @@ class topic_class extends AWS_MODEL
 
 	public function get_topic_by_parent_ids($parent_ids)
 	{
-		$topics = new array();
+		$topics = array();
 
 		if (! $parents_id)
 		{
