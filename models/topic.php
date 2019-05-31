@@ -205,13 +205,12 @@ class topic_class extends AWS_MODEL
 	{
 		$topics = array();
 
-		if (! $parents_id)
+		if (!$parent_ids)
 		{
 			return false;
 		}
 
 		$parent_id_list = explode(',', $parent_ids);
-
 		foreach ($parent_id_list as $key => $parent_id)
 		{
 			$topics[$key] = $this->fetch_row('topic', 'topic_id = ' . intval($parent_id));
