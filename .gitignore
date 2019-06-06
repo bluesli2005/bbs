@@ -1,2 +1,10 @@
 # Cache
 cache
+# Uploads
+uploads
+#lock.php
+system/config/install.lock.php
+#tmp
+tmp/plugins.php
+#user.ini
+.user.ini
