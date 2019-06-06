@@ -104,16 +104,22 @@
 							<?php $p_ids_list = explode(',', $this->topic_info['parent_id']); ?>
 							<?php } ?>
                  			<?php 
-								function deep_foreach ($arr, $tag ){
+								function deep_foreach ($arr, $tag, $selectId ){
 									//if(sizeof($arr) == 0 )  return false;
-                                    if ((tag)) $tag .= '○' ;
+                                    if ($tag) {
+										$tag .= '○';
+									} else {
+										$tag = '○' ;
+									}
                                     foreach ($arr as $key => $val ) {
+										echo $selelctId;
+										$selectTag = $val['info']['topic_id'] == $selectId ? ' selected = "selected"' : '';
                                         if(sizeof( $val["child"] ) > 0 )
                                         {
-											$options .= "<option value=". $val['info']['topic_id']. ">" . $tag . $val['info']['topic_title'] ."</option>";
-                                            $options .= deep_foreach($val["child"], $tag);
+											$options .= "<option value=". $val['info']['topic_id']." $selectTag>" . $tag . $val['info']['topic_title'] ."</option>";
+                                            $options .= deep_foreach($val['child'], $tag, $selectId);
                                         } else {
-										    $options .= "<option value=". $val['info']['topic_id']. ">" . $tag . $val["info"]['topic_title'] ."</option>";
+										    $options .= "<option value=". $val['info']['topic_id']." $selectTag>" . $tag . $val["info"]['topic_title'] ."</option>";
 										}
                                     }
 								    return $options;
@@ -121,10 +127,10 @@
 							?>
                             <?php for ($i = 1; $i <= 3; $i++) { ?>
 							<span class="col-sm-4 col-xs-3 col-lg-4 control-label"><?php if($i == 1 ) {  _e('选择父话题'); } ?></span>
-							<div class="col-sm-4 col-xs-8 col-lg-8">
+							<div class="col-sm-8 col-xs-8 col-lg-8">
 								<select id="parent_topic_select_<?php echo $i ?>" name="parent_id_<?php echo $i ?>">
 								<option value="0"> --- </option>
-                                <?php echo deep_foreach($this->parent_all_topic_list); ?>
+                                <?php echo deep_foreach($this->parent_all_topic_list, null, $p_ids_list[$i - 1]); ?>
 								</select>
 							</div>
 							<?php } ?>
