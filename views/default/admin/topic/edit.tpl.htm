@@ -109,7 +109,7 @@
                                     if ($tag) {
 										$tag .= '○';
 									} else {
-										$tag = '○' ;
+										$tag = ' ' ;
 									}
                                     foreach ($arr as $key => $val ) {
 										echo $selelctId;
@@ -128,7 +128,7 @@
                             <?php for ($i = 1; $i <= 3; $i++) { ?>
 							<span class="col-sm-4 col-xs-3 col-lg-4 control-label"><?php if($i == 1 ) {  _e('选择父话题'); } ?></span>
 							<div class="col-sm-8 col-xs-8 col-lg-8">
-								<select id="parent_topic_select_<?php echo $i ?>" name="parent_id_<?php echo $i ?>">
+								<select id="parent_topic_select_<?php echo $i ?>" name="parent_id_<?php echo $i ?>" style='height:30px; width:300px; line-height:30px; margin-bottom:5px;  border:1px solid #ccc;  -moz-border-radius:2px; -webkit-border-radius:2px; border-radius:2px;  '>
 								<option value="0"> --- </option>
                                 <?php echo deep_foreach($this->parent_all_topic_list, null, $p_ids_list[$i - 1]); ?>
 								</select>
