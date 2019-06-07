@@ -255,6 +255,7 @@
 
 					<?php TPL::output('topic/related_topics.tpl.htm'); ?>
 
+					<!-- 父话题 -->
 					<?php if ($this->parent_topic_info) { ?>
 					<div class="aw-mod">
 						<div class="mod-head">
@@ -262,6 +263,18 @@
 						</div>
 					<?php foreach($this->parent_topic_info as $parent_id => $parent_topic) { ?>
 						<a class="aw-topic-name" href="topic/<?php echo $parent_topic['topic_id'] ?>" data-id="<?php echo $parent_topic['topic_id']; ?>"><span><?php echo $parent_topic['topic_title']; ?></span></a>
+					<?php } ?>
+					</div>
+					<?php } ?>
+
+					<!-- 字话题 -->
+					<?php if ($this->children_topic_info) { ?>
+					<div class="aw-mod">
+						<div class="mod-head">
+							<h3><?php _e('子话题'); ?></h3>
+						</div>
+					<?php foreach($this->children_topic_info as  $child_topic) { ?>
+						<a class="aw-topic-name" href="topic/<?php echo $child_topic['topic_id'] ?>" data-id="<?php echo $child_topic['topic_id']; ?>"><span><?php echo $child_topic['topic_title']; ?></span></a>
 					<?php } ?>
 					</div>
 					<?php } ?>

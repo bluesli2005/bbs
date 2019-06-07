@@ -214,14 +214,14 @@ class topic_class extends AWS_MODEL
 		foreach ($parent_id_list as $key => $parent_id)
 		{
 			$topics[$key] = $this->fetch_row('topic', 'topic_id = ' . intval($parent_id));
-
-			// if ($topics[$parent_id] AND !$topics[$parent_id]['url_token'])
-			// {
-			// 	$topics[$parent_id]['url_token'] = urlencode($topics[$parent_id]['topic_title']);
-			// }
 		}
 
 		return $topics;
+	}
+
+	public function get_children_topic_by_topic_id($topic_id)
+	{
+		return $this->fetch_all('topic', 'parent_id like "%' . $topic_id .',"') ;
 	}
 
 	public function get_topic_by_url_token($url_token)
