@@ -106,15 +106,10 @@
                  			<?php 
 								function deep_foreach ($arr, $tag, $selectId ){
 									//if(sizeof($arr) == 0 )  return false;
-                                    if ($tag) {
-										$tag .= '○';
-									} else {
-										$tag = ' ' ;
-									}
-                                    foreach ($arr as $key => $val ) {
-										echo $selelctId;
+                                	$tag .= '●';
+								    foreach ($arr as $key => $val ) {
 										$selectTag = $val['info']['topic_id'] == $selectId ? ' selected = "selected"' : '';
-                                        if(sizeof( $val["child"] ) > 0 )
+										if(sizeof( $val["child"] ) > 0 )
                                         {
 											$options .= "<option value=". $val['info']['topic_id']." $selectTag>" . $tag . $val['info']['topic_title'] ."</option>";
                                             $options .= deep_foreach($val['child'], $tag, $selectId);
