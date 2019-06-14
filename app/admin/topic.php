@@ -114,7 +114,7 @@ class topic extends AWS_ADMIN_CONTROLLER
 
 		$parent_topic_list = $this->model('topic')->get_parent_topics();
 
-		$parent_children_list = $this->model('topic')->get_children_topic_by_topic_id();
+		$children_topic_list = $this->model('topic')->get_children_topic_by_topic_id();
 
 		$url_param = array();
 
