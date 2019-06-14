@@ -74,9 +74,9 @@
                                     <?php  } ?>
 									<?php } ?>
                                 </td>
-                                    
+
                                 <td>
-                                    <?php forEach($this->children_topic_list as $child_topic) { ?>
+                                    <?php forEach($topic_info['children_topic_list'] as $child_topic) { ?>
                                     <a href="topic/<?php echo $child_topic['topic_id']; ?>" target="_blank"><?php echo $child_topic['topic_title']; ?></a>
                                     <?php } ?>
                                 </td>
