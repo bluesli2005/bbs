@@ -37,6 +37,7 @@
                                 <th><?php _e('合并'); ?></th>
                                 <th><?php _e('状态'); ?></th>
                                 <th><?php _e('父话题'); ?></th>
+                                <th><?php _e('子话题'); ?></th>
                                 <th><?php _e('最后编辑用户'); ?></th>
                                 <th><?php _e('最后编辑时间'); ?></th>
                                 <th><?php _e('操作'); ?></th>
@@ -72,6 +73,12 @@
                                     <?php  	} ?>
                                     <?php  } ?>
 									<?php } ?>
+                                </td>
+                                    
+                                <td>
+                                    <?php forEach($this->children_topic_list as $child_topic) { ?>
+                                    <a href="topic/<?php echo $child_topic['topic_id']; ?>" target="_blank"><?php echo $child_topic['topic_title']; ?></a>
+                                    <?php } ?>
                                 </td>
 
                                 <td><a href="people/<?php echo $this->users_info[$topic_info['last_edited_uid']]['uid']; ?>" target="_blank"><?php echo $this->users_info[$topic_info['last_edited_uid']]['user_name'] ?></a></td>

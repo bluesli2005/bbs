@@ -114,6 +114,8 @@ class topic extends AWS_ADMIN_CONTROLLER
 
 		$parent_topic_list = $this->model('topic')->get_parent_topics();
 
+		$parent_children_list = $this->model('topic')->get_children_topic_by_topic_id();
+
 		$url_param = array();
 
 		foreach($_GET as $key => $val)
@@ -134,6 +136,7 @@ class topic extends AWS_ADMIN_CONTROLLER
 		TPL::assign('list', $topic_list);
 		TPL::assign('users_info', $users_info);
 		TPL::assign('parent_topic_list', $parent_topic_list);
+		TPL::assign('children_topic_list', $children_topic_list);
 		TPL::output('admin/topic/list');
 	}
 
