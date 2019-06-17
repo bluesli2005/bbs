@@ -167,8 +167,6 @@ class topic extends AWS_ADMIN_CONTROLLER
 
 				$topic_list[$key]['last_edited_time'] = $action_log['add_time'];
 
-				$topic_list[$key]['children_topic_list'] = $this->get_
-
 				$last_edited_uids[] = $topic_list[$key]['last_edited_uid'];
 			}
 
