@@ -719,9 +719,9 @@ class main extends AWS_CONTROLLER
 
 		TPL::assign('content_nav_menu', $this->model('menu')->get_nav_menu_list('explore'));
 
-		TPL::import_js(array(
-			'mobile/js/iscroll.js',
-		));
+		//TPL::import_js(array(
+		//	'mobile/js/iscroll.js',
+		//));
 
 		TPL::output('m/index');
 	}

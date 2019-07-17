@@ -15,19 +15,19 @@
             <header>
                 <h1><img src="<?php echo G_STATIC_URL; ?>/mobile/images/logo.png"></h1>
                 <span class="search" style="background: #f9f9f9;">
-                <input name="q" type="text" id="index_search" placeholder="搜索" style="width:90%;font: 400 13.3333px Arial;text-indent: 5px;float: left;">
-                <b onClick="$('#search_form').submit();" style='float: right;width: 15px;line-height: 27px;'>
+                <input name="q" type="text" id="index_search" placeholder="搜索" style="width:90%;font: 400 13.3333px Arial;text-indent:5px;float: left;">
+                <b onClick="$('#search_form').submit();" style='float: right;width: 20px;line-height: 36px;'>
                     <img src="<?php echo G_STATIC_URL; ?>/mobile/images/search.png">
                 </b>
                 </span>
-                <a href="m/inbox/"><em><img src="<?php echo G_STATIC_URL; ?>/mobile/images/note.png"><i id=""><?php echo $this->user_info['inbox_unread'] + $this->user_info['notification_unread']; ?></i></em></a>
+                <!--a href="m/inbox/"><em><img src="<?php echo G_STATIC_URL; ?>/mobile/images/note.png"><i id=""><?php echo $this->user_info['inbox_unread'] + $this->user_info['notification_unread']; ?></i></em></a-->
             </header>
         </form>
     </div>
 
     <!--搜索end-->
     <!--分类-->
-    <div id="wrapper" class="clearfix">
+    <!--div id="wrapper" class="clearfix">
     <div class="scroll qumuen">
         <?php if ($this->content_nav_menu) { ?>
             <?php foreach ($this->content_nav_menu as $key => $val) { ?>
@@ -47,7 +47,7 @@
             <?php } ?>
         <?php } ?>
     </div>
-    </div>
+    </div-->
     <!--分类end-->
     <!--关注推荐-->
     <div class="gztj_tab phb_tab">
@@ -88,9 +88,9 @@
     <div class="load_more" style="display: none;"><a href="#"><img src="/static/mobile/images/loading.gif"></a></div>
     </body>
     <script type="text/javascript">
-        jQuery(function ($) {
-            var Scroll = new iScroll('wrapper',{hScrollbar:false, vScrollbar:false, vScroll: false});
-        });
+        //jQuery(function ($) {
+        //    var Scroll = new iScroll('wrapper',{hScrollbar:false, vScrollbar:false, vScroll: false});
+        //});
         var CATEGORY_ID;
         var TYPE;
         var IS_SSL = "is_new";
@@ -112,7 +112,7 @@
             };
             AWS.load_index_view(G_BASE_URL + '/m/ajax/get_index_data/', data);
 
-            scroll(function (direction) {
+            /*scroll(function (direction) {
                 if (direction == 'down') {
                     $(window).scroll(function () {
                         if( $(document).scrollTop() >= 195)
@@ -135,7 +135,7 @@
                         }
                     });
                 }
-            });
+            });*/
             <?php if(is_mobile()){ ?>
                 var winHeight = $(window).height();   //获取当前页面高度
                 $(window).resize(function(){
@@ -233,7 +233,7 @@
             })
         });
 
-        function scroll(fn) {
+        /*function scroll(fn) {
             var beforeScrollTop = document.body.scrollTop
             window.addEventListener("scroll", function () {
                 var afterScrollTop = $(document).scrollTop(),
@@ -242,6 +242,6 @@
                 fn(delta > 0 ? "down" : "up");
                 beforeScrollTop = afterScrollTop;
             });
-        }
+        }*/
     </script>
 <?php TPL::output('m/footer.tpl.htm'); ?>

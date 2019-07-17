@@ -677,7 +677,6 @@ class ajax extends AWS_CONTROLLER
 		}
 
 		TPL::assign('topics_list', $topics_list);
-
 		if (is_mobile())
 		{
 			TPL::output('m/ajax/focus_topics_list');
