@@ -5,10 +5,13 @@ cache
 uploads
 
 #system/config/
-system/config/*
+system
 
 #tmp
-tmp/*
+tmp
 
 #user info
 .user.ini
+
+#plugin
+plugins

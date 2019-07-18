@@ -84,6 +84,7 @@ header a.fr i{ font-size:10px; color:#fff; background:#f9d11a; display:inline-bl
 .nav > ul li:last-child{ border-right:none}
 .nav > ul li i.xfind{ background:url(../images/find.png) no-repeat; background-size:100%}
 .nav > ul li i.theme{ background:url(../images/theme.png) no-repeat; background-size:100%}
+.nav > ul li i.note{ background:url(../images/note.png) no-repeat; background-size:100%}
 .nav > ul li i.my{ background:url(../images/my.png) no-repeat; background-size:100%}
 .nav ul li a{display: block;height: 49px;padding-top:7px;font-size: 10px;color: #7c868f;}
 .nav > ul li a.active i.xfind{ background:url(../images/find2.png) no-repeat; background-size:100%}

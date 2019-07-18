@@ -7,7 +7,7 @@
 <div class="nav">
 	<ul>
 		<li>
-			<a href="m/" <?php if ($_GET['act'] == 'index') { ?>class="active"<?php } ?>><i class="icon xfind"></i><?php _e('发现'); ?></a>
+			<a href="m/" <?php if ($_GET['act'] == 'index') { ?>class="active"<?php } ?>><i class="icon xfind"></i><?php _e('首页'); ?></a>
 		</li>
 
 		<li>
@@ -15,11 +15,16 @@
 		</li>
 
 		<li>
-			<a href="people/<?php echo $this->user_info['url_token']; ?>" class="user <?php if ($_GET['act'] == 'people') { ?>active<?php }?>"><span class="triangle"></span><i class="icon my"></i>
-			<?php _e('我'); ?>
+			<a href="m/inbox/"><i class="icon note"></i><?php _e('通知'); ?>
 			<?php if ($this->user_info['inbox_unread'] != 0 || $this->user_info['notification_unread']) { ?>
 			<i class="icon-tips"></i>
 			<?php } ?>
+			</a>
+		</li>
+
+		<li>
+			<a href="people/<?php echo $this->user_info['url_token']; ?>" class="user <?php if ($_GET['act'] == 'people') { ?>active<?php }?>"><span class="triangle"></span><i class="icon my"></i>
+			<?php _e('我'); ?>
 			</a>
 		</li>
 
