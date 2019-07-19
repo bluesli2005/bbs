@@ -80,7 +80,7 @@ header a.fr i{ font-size:10px; color:#fff; background:#f9d11a; display:inline-bl
 .autoheight{ height:49px; margin-top:10px;}
 .nav{position:fixed;z-index:9999;bottom:0;width:100%;height:49px;border-top: 1px solid #e4e4e4;}
 .nav > ul{position: relative;z-index: 1;height:49px;background:#fefefe;}
-.nav ul li{position:relative;float: left;width: 33%;text-align: center;}
+.nav ul li{position:relative;float: left;width: 20%;text-align: center;}
 .nav > ul li:last-child{ border-right:none}
 .nav > ul li i.xfind{ background:url(../images/find.png) no-repeat; background-size:100%}
 .nav > ul li i.theme{ background:url(../images/theme.png) no-repeat; background-size:100%}

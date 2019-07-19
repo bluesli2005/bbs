@@ -13,7 +13,11 @@
 		<li>
 			<a href="m/topic/" <?php if ($_GET['act'] == 'topic') { ?>class="active"<?php } ?>><i class="icon theme"></i><?php _e('话题'); ?></a>
 		</li>
-
+		<li>
+			<a href="m/addarticle/">
+				<img src="http://39.100.83.252/fishing/static/mobile/images/edit.png">
+			</a>
+		<li>
 		<li>
 			<a href="m/inbox/"><i class="icon note"></i><?php _e('通知'); ?>
 			<?php if ($this->user_info['inbox_unread'] != 0 || $this->user_info['notification_unread']) { ?>
