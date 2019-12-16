@@ -35,11 +35,11 @@
                 </dl>
                 <span class="listbottom">
                     <?php if($v['article_img']!=1){ ?>
-                    <em><img src="/static/mobile/images/z.png"><?php echo $v['votes']; ?></em>
+                    <em><?php echo $v['votes']; ?>赞同</em>
                     <?php }else{ ?>
-                    <em><img src="/static/mobile/images/eye_ico.png"><?php echo $v['views']; ?></em>
+                    <em><?php echo $v['views']; ?>关注</em>
                     <?php } ?>
-                    <em><img src="/static/mobile/images/p.png"><?php echo $v['comments']; ?></em>
+                    <em><?php echo $v['comments']; ?>评论</em>
                     <i><?php echo $v['add_time'];?></i>
                 </span>
             </article>
