@@ -100,11 +100,11 @@ class main extends AWS_CONTROLLER
 			TPL::set_meta('description', $meta_description);
 		}
 
-		// 导航
-		if (TPL::is_output('block/content_nav_menu.tpl.htm', 'explore/index'))
-		{
-			TPL::assign('content_nav_menu', $this->model('menu')->get_nav_menu_list('explore'));
-		}
+		// 导航(首页)
+		//if (TPL::is_output('block/content_nav_menu.tpl.htm', 'explore/index'))
+		//{
+		//	TPL::assign('content_nav_menu', $this->model('menu')->get_nav_menu_list('explore'));
+		//}
 
 		// 边栏可能感兴趣的人
 		if (TPL::is_output('block/sidebar_recommend_users_topics.tpl.htm', 'explore/index'))

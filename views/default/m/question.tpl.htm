@@ -23,7 +23,7 @@
     }
 </style>
 <!-- 内容 -->
-<div style="background: #f8f8f8" class="container padding-0">
+<div style="" class="container padding-0">
     <!-- 话题bar -->
     <div class="aw-topic-bar clearfix" data-id="<?php echo $this->question_info['question_id']; ?>" data-type="question"
          data-elite="<?php echo $this->question_info['elite']; ?>"
@@ -102,9 +102,9 @@
 
             <div class="mod-footer aw-question-detail">
                 <div class="meta">
-                    <a class="aw-invite-replay btn-mini"><i class="icon icon-inviteask"></i> <?php _e('邀请回复'); ?></a>
-                    <a style="font-size: 12px" class="btn btn-success btn-mini pull-right <?php if ($this->question_focus) { ?> active<?php } ?>"
-                       onclick="AWS.User.follow($(this), 'question', <?php echo $this->question_info['question_id']; ?>,'<?php echo new_post_hash();?>');"><?php if ($this->question_focus) { ?><?php _e('取消关注'); ?><?php } else { ?><?php _e('关注'); ?><?php } ?></a>
+                    <a class="aw-invite-replay btn-replay btn-mini"><i class="icon icon-inviteask"></i> <?php _e('邀请回复'); ?></a>
+                    <!--a style="font-size: 12px" class="btn btn-success btn-mini pull-right <?php if ($this->question_focus) { ?> active<?php } ?>"
+                       onclick="AWS.User.follow($(this), 'question', <?php echo $this->question_info['question_id']; ?>,'<?php echo new_post_hash();?>');"><?php if ($this->question_focus) { ?><?php _e('取消关注'); ?><?php } else { ?><?php _e('关注'); ?><?php } ?></a-->
                 </div>
                 <div class="aw-invite-box collapse">
                     <div class="mod-head users-list" id="question-users-list">
@@ -131,7 +131,7 @@
     <!-- end 问题详情 -->
 
     <!-- 回复列表 -->
-    <div class="aw-replay-list" style="background: #f8f8f8;">
+    <div class="aw-replay-list" style="">
         <?php if ($this->best_answer) { ?>
             <div class="hot_reply">
                 <h4><span>最佳回复</span><a class="tag"><img src="<?php echo G_STATIC_URL ?>/mobile/images/sq.png"><i>收起</i></a>
@@ -205,13 +205,13 @@
         <?php } ?>
 
 
-        <div class="hot_reply">
+        <!--div class="hot_reply">
             <h4><span>热门回复</span><a class="tag"><img src="<?php echo G_STATIC_URL ?>/mobile/images/sq.png"><i>收起</i></a>
             </h4>
             <div class="reply_text">
                 <a class="aw-load-more" onclick="loadAnswer('hot',1,this)"><i class="icon icon-loading icon-spin"></i> <span>更多</span></a>
             </div>
-        </div>
+        </div-->
         <div class="hot_reply">
             <h4><span>回复</span><a class="tag"><img src="<?php echo G_STATIC_URL ?>/mobile/images/sq.png"><i>收起</i></a>
             </h4>

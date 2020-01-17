@@ -342,7 +342,8 @@ class ajax extends AWS_CONTROLLER
         $type = $_GET['type'];
         $page = intval($_GET['page']);
         $is_ssl = $_GET['is_ssl'];
-        $data = $this->model('article')->get_mix_list($category_id,$is_ssl, $this->user_id, $page, $limit);
+        //$data = $this->model('article')->get_mix_list($category_id,$is_ssl, $this->user_id, $page, $limit);
+		$data = $this->model('article')->get_mix_list($category_id,$is_ssl, null, $page, $limit);
         TPL::assign('data', $data);
         TPL::assign('type', $type);
         TPL::assign('page', $page);
@@ -355,7 +356,7 @@ class ajax extends AWS_CONTROLLER
         $offset = intval($_GET['page']) ? (intval($_GET['page'])-1) * 2 : 0;
         $page = intval($_GET['page']);
         $where = '';
-        $users = $this->model('account')->get_users_by_counts($this->user_id, $where, 'fans_count desc,question_count desc,answer_count desc', 2, $offset);
+        $users = $this->model('account')->get_users_by_counts(null, $where, 'fans_count desc,question_count desc,answer_count desc', 20, $offset);
         if (!$users) {
             $users = $this->model('account')->get_users_by_counts($this->user_id, $where, 'fans_count desc,question_count desc,answer_count desc', 2, 0);
             $page = 0;

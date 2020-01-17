@@ -1,16 +1,16 @@
 <dl>
-    <dt>
+    <!--dt>
         <a href="<?php if ($this->answer_info['anonymous']) { ?>javascript:;<?php } else { ?>m/people/<?php echo $this->answer_info['uid']; ?><?php } ?>">
         <img src="<?php if ($this->answer_info['anonymous']) { ?><?php echo G_STATIC_URL; ?>/common/avatar-mid-img.png<?php } else { ?><?php echo get_avatar_url($this->answer_info['uid'], 'max'); ?><?php } ?>"/>
         </a>
-    </dt>
-    <dd>
-        <h3>
+		<h3>
             <a href="<?php if ($this->answer_info['anonymous']) { ?>javascript:;<?php } else { ?>m/people/<?php echo $this->answer_info['uid']; ?><?php } ?>"><?php if ($this->answer_info['anonymous']) { ?><?php _e('匿名用户'); ?><?php } else { ?><?php echo $this->answer_info['user_info']['user_name']; ?><?php } ?></a>
             <?php if ($this->answer_info['user_info']['verified'] == 'enterprise') { ?>
                 <img src="<?php echo G_STATIC_URL ?>/mobile/images/v.png">
             <?php } ?>
         </h3>
+    </dt-->
+    <dd>
         <p>
             <?php echo nl2br($this->answer_info['answer_content']); ?>
             <?php if ($this->answer_info['attachs']) { ?>

@@ -13,10 +13,14 @@
 		<li>
 			<a href="m/topic/" <?php if ($_GET['act'] == 'topic') { ?>class="active"<?php } ?>><i class="icon theme"></i><?php _e('话题'); ?></a>
 		</li>
-		<li>
-			<a href="m/addarticle/" style="height: 50px; padding-top: 0">
-				<img src="/static/mobile/images/edit.png">
-			</a>
+		<li class="qmeun">
+			<!--a href="m/addarticle/" style="height: 50px; padding-top: 0">
+				<img src="<?php echo G_STATIC_URL; ?>/mobile/images/edit.png">
+			</a-->
+
+              <span><img src="<?php echo G_STATIC_URL; ?>/mobile/images/edit.png"></span>
+              <a href="m/addarticle/" class="q2" style="display: none;"><img src="<?php echo G_STATIC_URL; ?>/mobile/images/e2.png"></a>
+              <a href="m/publish/" class="q3" style="display: none;"><img src="<?php echo G_STATIC_URL; ?>/mobile/images/e3.png"></a>
 		</li>
 		<li>
 			<a href="m/inbox/"><i class="icon note"></i><?php _e('通知'); ?>

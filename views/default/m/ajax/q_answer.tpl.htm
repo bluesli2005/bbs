@@ -4,14 +4,15 @@
         <dl>
             <dt>
                 <img src="<?php if ($answer['anonymous']) { ?><?php echo G_STATIC_URL; ?>/common/avatar-mid-img.png<?php } else { ?><?php echo get_avatar_url($answer['uid'], 'max'); ?><?php } ?>"/>
-            </dt>
-            <dd>
-                <h3>
+            	<h3>
                     <a href="<?php if ($answer['anonymous']) { ?>javascript:;<?php } else { ?>m/people/<?php echo $answer['uid']; ?><?php } ?>"><?php if ($answer['anonymous']) { ?><?php _e('匿名用户'); ?><?php } else { ?><?php echo $answer['user_info']['user_name']; ?><?php } ?></a>
                     <?php if ($answer['user_info']['verified'] == 'enterprise') { ?>
                         <img src="<?php echo G_STATIC_URL ?>/mobile/images/v.png">
                     <?php } ?>
                 </h3>
+          
+          	</dt>
+            <dd>
                 <p>
                     <?php echo nl2br($answer['answer_content']); ?>
                     <?php if ($answer['attachs']) { ?>

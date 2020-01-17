@@ -45,6 +45,7 @@ textarea.form-control{padding:6px;}
 .btn-primary{border:none;background-color: #66b7ff;}
 .btn-primary:hover, .btn-primary:active{background-color: #339DFF;}
 .btn-mini{width:64px;height: 24px;line-height:24px;padding:0;}
+.btn-replay{width:50%; line-height:24px; text-align:center; font-size:16px; display:inline-block;}
 .btn-normal{width: 70px;height: 34px;line-height: 34px;padding:0;font-size: 15px;}
 .btn-large{width: 90px;height: 34px;line-height: 34px;padding:0;}
 .btn-slarge{width: 175px;height: 40px;line-height: 40px;padding:0;font-size: 15px;}
