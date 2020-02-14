@@ -185,27 +185,24 @@ dl.cur dd a{ color:#3296FA}
 .topic_tab a.fr{ background:none}
 .topic_tab a.fr img{ width:20px; }
 
-.post_box{ padding:5px 0; background:#fff; margin-bottom:10px;word-break: break-all; border-bottom:1px solid #e4e4e4; }
-.post_title{ padding:0 12px;}
+.post_box{ padding:5px 3%; background:#fff; margin-bottom:10px;word-break: break-all; }
+.post_box .mod-footer{ padding: 10px 0; border-top: 1px #e4e4e4 solid;}
 .post_title h2{ font-size:17px; color:#333; margin-bottom:10px; line-height:20px; font-weight:bolder}
 .Rich_text img{ max-width:100%;}
-.post_box .mod-footer{ padding: 10px 4%;}
 .child-node-is-a a{color: #387EF1;}
 
-.hot_reply{  background:#fff; margin-bottom:10px;}
-.hot_reply h4{border-bottom:1px solid #e4e4e4; height:40px; line-height:40px;padding:0 12px;}
+.hot_reply{  background:#eaeaea; margin-bottom:10px;}
+.hot_reply h4{ background:#fff; height:40px; line-height:40px;padding:0 12px;}
 .hot_reply h4 span{ color:#333; font-size:12px;}
 .hot_reply h4 a{ float:right; font-size:12px; color:#3296FA}
 .hot_reply h4 a img{ width:12px; margin-right:3px;}
-
-
 
 /*帖子详情*/
 .reply_text h5{ height:30px; line-height:30px;padding:3px 12px 0;}
 .reply_text h5 span{ color:#333; font-size:12px;}
 .reply_text h5 a{ float:right; font-size:12px; color:#3296FA }
 .reply_text h5 a img{ width:12px; margin-right:3px;}
-.reply_text dl{ padding:10px 0; margin:0 12px; border-bottom:1px solid #e4e4e4;}
+.reply_text dl{background:#ffffff; padding:10px 3%; margin:10px 0px;}
 .reply_text dl:nth-last-of-type(1){border-bottom:0}
 .reply_text dl dt{ clear:both; width:100%; height:30px;}
 .reply_text dl dt img{ width:25px; height:25px; border-radius:25px;float:left}
@@ -239,7 +236,7 @@ dl.cur dd a{ color:#3296FA}
 
 
 .reply_text dl dd .meta span.operate{ margin-right:0}
-.author_text{border-top:1px solid #e3e3e3; height:60px; padding:10px 0 }
+.author_text{ height:60px; padding:0 5px }
 .author_text dl{margin:0 12px;height:40px; }
 .author_text dl dt{ float:left; width:40px; height:40px;border-radius:40px; margin-right:10px;}
 .author_text dl dt img{ width:40px; height:40px; border-radius:40px;}
