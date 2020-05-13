@@ -91,6 +91,12 @@ $(document).ready(function () {
             $(this).addClass('active');
         }
     });
+  
+  　$('.aw-invite-replay-box').click(function () {
+        $('html, body').animate({
+            scrollTop: $("#editorContainer").offset().top
+        }, 1000);
+    });
 
     function check_actions_new(time) {
         $.get(G_BASE_URL + '/home/ajax/check_actions_new/time-' + time, function (result) {

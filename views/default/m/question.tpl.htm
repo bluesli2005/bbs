@@ -23,7 +23,7 @@
     }
 </style>
 <!-- 内容 -->
-<div style="" class="container padding-0">
+<div class="container padding-0" style="background:#efefef;">
     <!-- 话题bar -->
     <div class="aw-topic-bar clearfix" data-id="<?php echo $this->question_info['question_id']; ?>" data-type="question"
          data-elite="<?php echo $this->question_info['elite']; ?>"
@@ -65,8 +65,10 @@
               <em><?php echo $this->question_info['answer_count']; ?>回答</em>
               <?php } ?>
               <!--i><?php echo date("Y-m-d", $this->question_info['add_time']); ?></i-->
+           	  <?php if($this->user_id){ ?>
               <a style="font-size: 12px;" class="btn btn-primary btn-mini pull-right <?php if ($this->question_focus) { ?> active<?php } ?>"
                        onclick="AWS.User.follow($(this), 'question', <?php echo $this->question_info['question_id']; ?>,'<?php echo new_post_hash();?>');"><?php if ($this->question_focus) { ?><?php _e('取消关注'); ?><?php } else { ?><?php _e('+关注问题'); ?><?php } ?></a>
+           	  <?php } ?> 
           </span>
         </div>
         <!--div class="author_text">
@@ -116,7 +118,7 @@
             <div class="mod-footer aw-question-detail">
                 <div class="meta">
                     <a class="aw-invite-replay btn-replay btn-mini"><i class="icon icon-inviteask"></i> <?php _e('邀请回复'); ?></a>
-                    <a class="aw-invite-replay btn-replay btn-mini"><i class="icon icon-edit"></i> 写回答 </a>
+                    <a class="aw-invite-replay-box btn-replay btn-mini"><i class="icon icon-edit"></i> 写回答 </a>
                 </div>
                 <div class="aw-invite-box collapse">
                     <div class="mod-head users-list" id="question-users-list">
@@ -224,9 +226,9 @@
                 <a class="aw-load-more" onclick="loadAnswer('hot',1,this)"><i class="icon icon-loading icon-spin"></i> <span>更多</span></a>
             </div>
         </div-->
-        <div class="hot_reply">
-            <h4><span>回复</span><a class="tag"><img src="<?php echo G_STATIC_URL ?>/mobile/images/sq.png"><i>收起</i></a>
-            </h4>
+        <div class="hot_reply" style="marign-top:10px">
+            <!--h4><span>回复</span><a class="tag"><img src="<?php echo G_STATIC_URL ?>/mobile/images/sq.png"><i>收起</i></a>
+            </h4-->
             <div class="reply_text">
                 <a class="aw-load-more" onclick="loadAnswer('normal',1,this)"><i class="icon icon-loading icon-spin"></i> <span>更多</span></a>
             </div>
